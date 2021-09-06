@@ -1,6 +1,7 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: %i[ show edit update destroy ]
   before_action :logged_in_user, only:[:edit, :update, :destroy]
+ # before_action :authenticate_user!
 
 
   # GET /tweets or /tweets.json
@@ -14,7 +15,8 @@ class TweetsController < ApplicationController
 
   # GET /tweets/new
   def new
-    @tweet = Tweet.new
+    @tweet = Tweet.new(user_id:current_user.id)
+    @user =current_user.id
   end
 
   # GET /tweets/1/edit
@@ -24,6 +26,7 @@ class TweetsController < ApplicationController
   # POST /tweets or /tweets.json
   def create
     @tweet = Tweet.new(tweet_params)
+    @tweet.user_id = current_user.id
 
     respond_to do |format|
       if @tweet.save
@@ -66,6 +69,6 @@ class TweetsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tweet_params
-      params.require(:tweet).permit(:user_id, :tweet)
+      params.require(:tweet).permit(:user_id, current_user.id, :tweet)
     end
 end
