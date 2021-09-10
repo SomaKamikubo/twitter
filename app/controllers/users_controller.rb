@@ -1,4 +1,4 @@
-class UserController < ApplicationController
+class UsersController < ApplicationController
   def new
     @user = User.new()
   end
@@ -7,7 +7,7 @@ class UserController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @root_url }
+        format.html { redirect_to root_url }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new, status: :unprocessable_entity }

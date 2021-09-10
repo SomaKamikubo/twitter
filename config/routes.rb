@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  get    '/entry',   to: 'user#new'
-  post   '/user/new',   to: 'user#create'
+  get    '/entry',   to: 'users#new'
+  post   '/users/new',   to: 'users#create'
   root :to => 'tweets#index'
 end
