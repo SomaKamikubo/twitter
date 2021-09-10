@@ -21,6 +21,7 @@
           <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
           <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
+        <td><%= link_to 'like',tweet, method: :post%></td>
       </tr>
     <% end %>
   </tbody>
