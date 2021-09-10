@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  get    '/entry',   to: 'users#new'
-  post   '/users/new',   to: 'users#create'
+  resources :users ,only: [:new, :create]
   root :to => 'tweets#index'
 end
