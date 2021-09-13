@@ -1,3 +1,43 @@
 // Place all the styles related to the user controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+    background-color: lightcyan;
+}
+.flex {
+    flex-direction: row;
+    display: -webkit-flex;
+    display: flex;
+}
+.timeline {
+    background-color: lightgreen;
+    flex: 4;
+}
+.sidebar {
+    background-color: lightpink;
+    flex: 1;
+}
+
+
+#center{
+    text-align: center;
+}
+#right {
+    text-align: right;
+}
+
+
+
+div {
+    border-style: solid;
+}
+
+th{
+    font-size: xx-large;
+}
+td{
+    font-size: x-large;
+
+    padding: 10px;
+    line-height: normal;
+}
