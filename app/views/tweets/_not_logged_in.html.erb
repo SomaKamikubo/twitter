@@ -1,4 +1,20 @@
-<p>タスクの管理ができるアプリです。まずはログインをしてください。</p>
+<p id="textbig">タスクの管理ができるアプリです。利用するにはログインしてください。</p>
+<div class="midle" id="center">
+
+<p id="textbig" id="center">ログイン</p>
 <%= link_to "ログイン", login_path%>
 <br>
+<img src="/assets/login.png" width="240" height="60" onmouseover="this.src='/assets/login2.png'" onmouseout="this.src='/assets/login.png'">
+<br>
+<%= link_to image_tag('login.png',:size => '240x60',:mouseover => 'login2.png'), login_path %>
+<br>
+<%= image_tag 'login.png', :width => '240', :height => '60', :mouseover => 'login2.png' , :class => "aa" %>
+<br>
 <%= link_to "初めての方はこちら", new_user_path %>
+<br>
+<img src="/assets/first.png" width="240" height="60" onmouseover="this.src='/assets/first2.png'" onmouseout="this.src='/assets/first.png'">
+
+
+</div>
+<p id="center">メールアドレスパスワードをお忘れ方</p>
+<p id="center">パスワード変更</p>

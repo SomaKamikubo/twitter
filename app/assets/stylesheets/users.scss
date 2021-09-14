@@ -1,24 +1,38 @@
 // Place all the styles related to the user controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//body
 body {
     background-color: lightcyan;
 }
+
+//レイアウト
 .flex {
     flex-direction: row;
     display: -webkit-flex;
     display: flex;
 }
+.midle {
+    border: 1px solid #aaa;
+    width: 400px;
+    height: 500px;
+    background: white;
+    margin: auto;
+}
 .timeline {
+    border-style: solid;
     background-color: lightgreen;
     flex: 4;
 }
 .sidebar {
+    border-style: solid;
     background-color: lightpink;
     flex: 1;
 }
 
 
+//文字の場所
 #center{
     text-align: center;
 }
@@ -27,17 +41,17 @@ body {
 }
 
 
-
-div {
-    border-style: solid;
-}
-
+//その他
 th{
     font-size: xx-large;
 }
 td{
     font-size: x-large;
-
     padding: 10px;
+    line-height: normal;
+}
+
+#textbig {
+    font-size: xx-large;
     line-height: normal;
 }
