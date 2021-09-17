@@ -27,13 +27,14 @@
         <% @tweets.each do |tweet| %>
           <tr>
             <td><%= tweet.user_id %></td>
-            <td><%= link_to tweet.tweet, tweet %></td>
+            <td><%= link_to tweet.letter, tweet %></td>
             <% if tweet.user_id == @user.id %>
               <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
               <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
             <td><%= link_to "like",tweet, method: :post%></td>
             <td><img src="/assets/heart_white.png" width="30" height="30" onclick="this.src='/assets/heart_red.png'"></td>
+            <td>a.on_off_btn{class: (@model.flg ? "active": "", href: toggle_flg_path(@model), data: {remote: true, method: :patch}}</td>
           </tr>
         <% end %>
       </tbody>
