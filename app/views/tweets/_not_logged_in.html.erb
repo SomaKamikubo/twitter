@@ -4,16 +4,11 @@
 <p id="textbig" id="center">ログイン</p>
 <%= link_to "ログイン", login_path%>
 <br>
-<img src="/assets/login.png" width="240" height="60" onmouseover="this.src='/assets/login2.png'" onmouseout="this.src='/assets/login.png'">
+<%= link_to login_path do image_tag('login.png',:size => '240x60' , onmouseover: "this.src='#{asset_path('login2.png')}'" ,onmouseout: "this.src='#{asset_path('login.png')}'") end %>
 <br>
-<%= link_to image_tag('login.png',:size => '240x60',:mouseover => 'login2.png'), login_path %>
 <br>
-<%= image_tag 'login.png', :width => '240', :height => '60', :mouseover => 'login2.png' , :class => "aa" %>
+<%= link_to new_user_path do image_tag('first.png',:size => '240x60' , onmouseover: "this.src='#{asset_path('first2.png')}'" ,onmouseout: "this.src='#{asset_path('first.png')}'") end %>
 <br>
-<%= link_to "初めての方はこちら", new_user_path %>
-<br>
-<img src="/assets/first.png" width="240" height="60" onmouseover="this.src='/assets/first2.png'" onmouseout="this.src='/assets/first.png'">
-
 
 </div>
 <p id="center">メールアドレスパスワードをお忘れ方</p>
