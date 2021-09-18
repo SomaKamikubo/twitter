@@ -1,6 +1,23 @@
 <p id="notice"><%= notice %></p>
 
 
+<script>
+  var pics_src = new Array("/assets/heart_white.png","/assets/heart_red.png");
+  var num = 0;
+
+  function slideshow(id){
+      if (num == 1) {
+          num = 0;
+      }
+      else {
+          num ++;
+      }
+      document.getElementById(id).src=pics_src[num];
+  }
+</script>
+
+<% likearrray = Array.new(100)%>
+
 
 <body>
 <div class="flex">
@@ -34,9 +51,11 @@
             <% end %>
             <%# <td><%= link_to "like",tweet, method: :post%></td>
             <%# <td><img src="/assets/heart_white.png" width="30" height="30" onclick="this.src='/assets/heart_red.png'"></td> %>
-            <td id="<%= dom_id tweet %>">
-          <%= render 'likes/like_button', tweet: tweet%>
-          </td>
+            <td><% if current_user.like?(tweet)%>
+              <%= render 'likes/unlike',{tweet: tweet}%>
+            <%else%>
+              <%= render 'likes/like', {tweet: tweet}%>
+            <%end%></td>
           </tr>
         <% end %>
       </tbody>

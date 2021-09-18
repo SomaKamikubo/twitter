@@ -10,6 +10,6 @@ Rails.application.routes.draw do
   # post 'tweets/:id', to:'likes#create'
   resources :likes ,only: [:destroy] 
   resources :tweets do
-    resources :likes, only: [:create, :destroy]
+    resources :likes, only: %i[:create, :destroy], shallow: true
   end 
 end
