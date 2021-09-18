@@ -2,6 +2,16 @@ class UsersController < ApplicationController
   def new
     @user = User.new()
   end
+
+  def show
+    set_user
+    @tweets = Tweet.where(user_id: @user.id)
+    # @likes = Like.find_by_sql("select tweet_id from likes where user_id = #{@user.id}")
+    @likes = Like.where(user_id: @user.id)
+    @liketweetid = @likes.pluck(:tweet_id)
+    @like_tweets = Tweet.where(id: @liketweetid)
+  end
+
   def create
     @user = User.new(user_params)
 
@@ -15,14 +25,16 @@ class UsersController < ApplicationController
       end
     end
   end
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def user_params
-      params.require(:user).permit(:name,:email,:password)
-    end
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def user_params
+    params.require(:user).permit(:name, :email, :password)
+  end
 end

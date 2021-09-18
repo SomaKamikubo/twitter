@@ -1,0 +1,49 @@
+<h2><%= @user.name%></h2>
+<br>
+<P>ID:<%=@user.id%>
+
+
+  <body>
+    <div class="area">
+      <input type="radio" name="tab_name" id="tab1" checked>
+      <label class="tab_class" for="tab1">ツイート</label>
+      <div class="content_class">
+        <table>
+          <tbody>
+            <% @tweets.each do |tweet| %>
+            <tr>
+              <td><%= link_to tweet.letter, tweet %></td>
+              <% if tweet.user_id == @user.id %>
+              <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+              <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+      <input type="radio" name="tab_name" id="tab2">
+      <label class="tab_class" for="tab2">いいね</label>
+      <div class="content_class">
+        <table>
+          <tbody>
+            <% if @likes != nil %>
+            <% @like_tweets.each do |tweet| %>
+            <tr>
+              <td><%= link_to tweet.letter, tweet %></td>
+              <% if tweet.user_id == @user.id %>
+              <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+              <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <% end %>
+            </tr>
+            <% end %>
+            <% else %>
+            <tr>
+              <td>ここにいいねした一覧が表示されます</td>
+            <tr>
+              <%end%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :users ,only: [:new, :create]
+  resources :users ,only: [:new, :show, :create]
   root :to => 'tweets#index'
   # post 'tweets/:id', to:'likes#create'
   resources :likes ,only: [:destroy] 
