@@ -12,6 +12,36 @@
   <%= link_to "ログアウト", logout_path, method: :delete %>
   </div>
 
+
+<script>
+  var pics_src = new Array("/assets/heart_white.png","/assets/heart_red.png");
+  var num = 0;
+
+function slideshow(id,num){
+    if (num == "true") {
+        num = "false";
+        document.getElementById(id).src="/assets/heart_white.png";
+    }
+    else {
+        num ="true";
+        document.getElementById(id).src="/assets/heart_red.png";
+    }
+    
+}
+function func1(id){
+  const elements = document.getElementsByName(id);
+
+      
+  if (elements[0].checked){
+    document.getElementById(id).src="/assets/heart_red.png";
+  }
+  else {
+      document.getElementById(id).src="/assets/heart_white.png";
+  }
+      
+}
+</script>
+
   <div class="timeline">
   <h2 id="center">タイムライン</h2>
     <table>
@@ -32,8 +62,13 @@
               <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
               <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
-            <%# <td><%= link_to "like",tweet, method: :post%></td>
-            <%# <td><img src="/assets/heart_white.png" width="30" height="30" onclick="this.src='/assets/heart_red.png'"></td> %>
+
+            
+            
+            <td><label><input type="checkbox" name="<%= tweet.id %>" onclick="func1(name)" hidden><img id="<%= tweet.id %>" src="/assets/heart_white.png" width="30" height="30"></label></td>
+
+
+            
             <td id="<%= dom_id tweet %>">
           <%= render 'likes/like_button', tweet: tweet%>
           </td>
