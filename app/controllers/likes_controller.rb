@@ -1,9 +1,9 @@
 class LikesController < ApplicationController
 
     def create
-      set_tweet
-      current_user.likes.create(tweet: @tweet)
-
+      @tweet = Tweet.find(params[:tweet_id])
+      like = current_user.likes.build(tweet_id: params[:tweet_id])
+      like.save
         # @like = Like.new()
         # @like.tweet_id = params[:id]
         # @like.user_id = current_user.id
@@ -20,9 +20,9 @@ class LikesController < ApplicationController
     end
 
     def destroy
-      @tweet = Tweet.find(params[:id])
-      current_user.likes.where(tweet: @tweet).destroy_all
-      render 'create'
+      @tweet = Tweet.find(params[:tweet_id])
+      like = Like.find_by(tweet_id: params[:tweet_id], user_id: current_user.id)
+      like.destroy
     end
 
 

@@ -1,7 +1,0 @@
-<% if  current_user.like? tweet %>
-  <%= link_to image_tag('heart_red.png', :size => '30x30'), like_path(tweet), method: :delete, remote: true, class: 'btn btn-xs btn-warning' %>
-<% else %>
-  <%= link_to image_tag('heart_white.png',:size => '30x30'), tweet_likes_path(tweet), method: :post, remote: true, class: 'btn btn-xs btn-default' %>
-<% end %>
-
-<%# current_user.like? tweet %>

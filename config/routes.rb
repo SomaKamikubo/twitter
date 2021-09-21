@@ -8,7 +8,8 @@ Rails.application.routes.draw do
   resources :users ,only: [:new, :show, :create]
   root :to => 'tweets#index'
   # post 'tweets/:id', to:'likes#create'
-  resources :likes ,only: [:destroy] 
+  # resources :likes ,only: [:destroy] 
+  delete 'tweets/:tweet_id/likes', to: 'likes#destroy' 
   resources :tweets do
     resources :likes, only: [:create, :destroy]
   end 
