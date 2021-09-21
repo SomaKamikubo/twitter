@@ -1,21 +1,23 @@
-<h2><%= @user.name%></h2>
-<br>
-<P>ID:<%=@user.id%>
+<%= link_to 'Back', tweets_path %>
+<h2><span id="textbig"><%= @user.name%></span><font color="gray"> ID:<%=@user.id%></font></p></h2>
 
+
+ 
+  
 
   <body>
     <div class="area">
-      <input type="radio" name="tab_name" id="tab1" checked>
+      <input id="tab1" type="radio" name="tab_name" checked>
       <label class="tab_class" for="tab1">ツイート</label>
       <div class="content_class">
-        <table>
+        <table class="a">
           <tbody>
-            <% @tweets.each do |tweet| %>
-            <tr>
-              <td><%= link_to tweet.letter, tweet %></td>
+            <% @tweets.each do |tweet| %>           
+            <tr class="a">
+              <td class="a"><%= link_to tweet.letter, tweet %></td>
               <% if tweet.user_id == @user.id %>
-              <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-              <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td class="a"><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+              <td class="a"><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <% end %>
             </tr>
             <% end %>
