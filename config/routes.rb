@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'relationships/create'
+  get 'relationships/destroy'
   resources :tweets
   get 'sessions/new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -9,8 +11,15 @@ Rails.application.routes.draw do
   root :to => 'tweets#index'
   # post 'tweets/:id', to:'likes#create'
   # resources :likes ,only: [:destroy] 
+
   delete 'tweets/:tweet_id/likes', to: 'likes#destroy' 
   resources :tweets do
     resources :likes, only: [:create, :destroy]
+  end 
+
+  resources :users do
+    resources :relationships, only: [:create, :destroy]
+    get :follows, on: :member
+    get :followers, on: :member
   end 
 end

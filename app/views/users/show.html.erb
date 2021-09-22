@@ -1,6 +1,13 @@
 <%= link_to 'Back', tweets_path %>
 <h2><span id="textbig"><%= @user.name%></span><font color="gray"> ID:<%=@user.id%></font></p></h2>
 
+<% if current_user == @user %>
+<p>編集</p>
+<% else%>
+<div id="follows_buttons_<%=@user.id%>">
+  <%= render partial: 'relationships/follow', locals:{user: @user} %>
+</div>
+<%end%>
 
  
   
@@ -29,7 +36,7 @@
       <div class="content_class">
         <table>
           <tbody>
-            <% if @likes != nil %>
+            <% if @like_tweets != nil %>
             <% @like_tweets.each do |tweet| %>
             <tr>
               <td><%= link_to tweet.letter, tweet %></td>
