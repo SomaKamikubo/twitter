@@ -4,19 +4,6 @@ class LikesController < ApplicationController
       @tweet = Tweet.find(params[:tweet_id])
       like = current_user.likes.build(tweet_id: params[:tweet_id])
       like.save
-        # @like = Like.new()
-        # @like.tweet_id = params[:id]
-        # @like.user_id = current_user.id
-
-        # respond_to do |format|
-        #     if @like.save
-        #       format.html { redirect_to root_url }
-        #       format.json { render :show, status: :created, location: @like }
-        #     else
-        #       format.html { render :new, status: :unprocessable_entity }
-        #       format.json { render json: @user.errors, status: :unprocessable_entity }
-        #     end
-        # end
     end
 
     def destroy

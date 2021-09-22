@@ -5,11 +5,8 @@ class UsersController < ApplicationController
 
   def show
     set_user
-    @tweets = Tweet.where(user_id: @user.id)
-    # @likes = Like.find_by_sql("select tweet_id from likes where user_id = #{@user.id}")
-    @likes = Like.where(user_id: @user.id)
-    @liketweetid = @likes.pluck(:tweet_id)
-    @like_tweets = Tweet.where(id: @liketweetid)
+    @tweets = @user.tweets
+    @like_tweets = @user.like_tweets
   end
 
   def create
