@@ -8,6 +8,6 @@ end
 
 100.times do |no|
     tweet_at_user = rand(5)+1
-    Tweet.create(:tweet => "これは#{no+1}番目のツイートです",:user_id => tweet_at_user)
+    Tweet.create(:letter => "これは#{no+1}番目のツイートです",:user_id => tweet_at_user)
 end
 

@@ -31,27 +31,28 @@
           </tbody>
         </table>
       </div>
-      <input type="radio" name="tab_name" id="tab2">
+      <input id="tab2" type="radio" name="tab_name">
       <label class="tab_class" for="tab2">いいね</label>
       <div class="content_class">
         <table>
           <tbody>
-            <% if @like_tweets != nil %>
+          <tr>
+          <% if false %>
             <% @like_tweets.each do |tweet| %>
-            <tr>
               <td><%= link_to tweet.letter, tweet %></td>
-              <% if tweet.user_id == @user.id %>
+              <% if tweet.user_id == current_user.id %>
               <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
               <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
               <% end %>
-            </tr>
             <% end %>
-            <% else %>
-            <tr>
+          <% else %>
               <td>ここにいいねした一覧が表示されます</td>
-            <tr>
-              <%end%>
+              <td><%= @like_tweets.nil? %></td>
+          <%end%>
+            
+          </tr>
           </tbody>
+
         </table>
       </div>
     </div>
