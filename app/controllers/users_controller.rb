@@ -6,10 +6,10 @@ class UsersController < ApplicationController
   def show
     set_user
     @tweets = @user.tweets
-    # @like_tweets = @user.like_tweets
-    @likes = Like.where(user_id: @user.id)
-    @liketweetid = @likes.pluck(:tweet_id)
-    @like_tweets = Tweet.where(id: @liketweetid)
+    @like_tweets = @user.like_tweets
+    # @likes = Like.where(user_id: @user.id)
+    # @liketweetid = @likes.pluck(:tweet_id)
+    # @like_tweets = Tweet.where(id: @liketweetid)
   end
 
   def create
