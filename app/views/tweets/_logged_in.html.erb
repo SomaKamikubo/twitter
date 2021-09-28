@@ -6,10 +6,13 @@
   <div class="flex">
     <div class="sidebar" id="center">
       <h2>マイアカウント</h2>
-      <p>アカウントの情報</p>
+      <%= link_to 'アカウントの情報', current_user%>
       <%= link_to 'New Tweet', new_tweet_path%>
       <br>
       <%= link_to "ログアウト", logout_path, method: :delete %>
+      <% @users.each do |user|%>
+      <%= link_to user.name, user%>
+      <%end%>
     </div>
 
 
@@ -39,6 +42,11 @@
         </thead>
 
         <tbody>
+        <%if @tweets == [] %>
+        <tr>
+        <td>ツイートをしましょう</td>
+        </tr>
+        <%else%>
           <% @tweets.each do |tweet| %>
           <tr>
           <% user_number = User.new() %>
@@ -63,6 +71,7 @@
             </td>
           </tr>
           <% end %>
+          <%end%>
         </tbody>
       </table>
     </div>

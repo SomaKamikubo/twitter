@@ -1,12 +1,20 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: %i[ show edit update destroy ]
-  before_action :logged_in_user, only:[:edit, :update, :destroy]
- # before_action :authenticate_user!
-
+  before_action :logged_in_user, only: [:edit, :update, :destroy]
+  # before_action :authenticate_user!
 
   # GET /tweets or /tweets.json
   def index
-    @tweets = Tweet.all
+    if current_user == nil
+      @tweets = Tweet.all
+    else
+      follow = []
+      if Relationship.find_by(following_id: current_user.id)
+        follow = current_user.followings.pluck(:id)
+      end
+      follow.push(current_user.id)
+      @tweets = Tweet.where(user_id: follow)
+    end
     @users = User.all
   end
 
@@ -16,8 +24,8 @@ class TweetsController < ApplicationController
 
   # GET /tweets/new
   def new
-    @tweet = Tweet.new(user_id:current_user.id)
-    @user =current_user.id
+    @tweet = Tweet.new(user_id: current_user.id)
+    @user = current_user.id
   end
 
   # GET /tweets/1/edit
@@ -63,13 +71,14 @@ class TweetsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_tweet
-      @tweet = Tweet.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def tweet_params
-      params.require(:tweet).permit(:user_id, current_user.id, :letter)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_tweet
+    @tweet = Tweet.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def tweet_params
+    params.require(:tweet).permit(:user_id, current_user.id, :letter)
+  end
 end

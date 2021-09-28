@@ -3,6 +3,7 @@ class User < ApplicationRecord
     has_many :tweets
     has_many :likes
     has_many :like_tweets, through: :likes, source: :tweet 
+    has_many :follow_tweets, through: :followings, source: :tweet
 
 
     def like?(tweet)
@@ -27,4 +28,5 @@ class User < ApplicationRecord
     # 今自分(引数のuser)がフォローしようとしているユーザー(レシーバー)がフォローされているユーザー(つまりpassive)の中から、引数に渡されたユーザー(自分)がいるかどうかを調べる
     passive_relationships.find_by(following_id: user.id).present?
   end
+
 end
