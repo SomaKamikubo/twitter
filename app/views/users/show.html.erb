@@ -5,7 +5,16 @@
 </h2>
 
 <% if current_user == @user %>
-<p>編集</p>
+<form name="form1" id="id_form1" action="">
+    <div id="output"></div>
+    <p id="first_text"><%= @user.comment %></p>
+    <div id="id_textBox1" style="display:none" value="<%= @user.comment %>"><%= render 'form', user: @user %></div>
+    <input type="button" id="profile" value="変更" onclick="onButtonClick();" />
+</form>
+
+<p></p>
+
+
 <% else%>
 <% user = @user%>
 <div id="follows_buttons_<%=user.id%>">
@@ -13,7 +22,22 @@
 </div>
 <%end%>
 
-
+<script type="text/javascript" language="javascript">
+function onButtonClick() {
+	if(document.getElementById("id_textBox1").style.display=="block"){
+		document.getElementById("id_textBox1").style="display:none";
+    target = document.getElementById("output");
+    target.innerText = document.forms.id_form1.id_textBox1.value;
+    document.getElementById("profile").value ="変更";
+    document.getElementById("output").style="display:block";
+	}else{
+		document.getElementById("id_textBox1").style ="display:block";
+    document.getElementById("profile").value ="確定";
+    document.getElementById("first_text").style="display:none";
+    document.getElementById("output").style="display:none";
+	}
+}
+</script>
 
 
 <body>
@@ -21,14 +45,14 @@
     <input id="tab1" type="radio" name="tab_name" checked>
     <label class="tab_class" for="tab1">ツイート</label>
     <div class="content_class">
-      <table class="a">
+      <table >
         <tbody>
           <% @tweets.each do |tweet| %>
-          <tr class="a">
-            <td class="a"><%= link_to tweet.letter, tweet %></td>
+          <tr >
+            <td ><%= link_to tweet.letter, tweet %></td>
             <% if tweet.user_id == @user.id %>
-            <td class="a"><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-            <td class="a"><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+            <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
           </tr>
           <% end %>
@@ -40,20 +64,21 @@
     <div class="content_class">
       <table>
         <tbody>
-          <tr>
             <% if @like_tweets == []%>
+            <tr>
             <td>ここにいいねした一覧が表示されます</td>
+            </tr>
             <%else%>
             <% @like_tweets.each do |tweet| %>
+            <tr>
             <td><%= link_to tweet.letter, tweet %></td>
-            <% if tweet.user_id == current_user.id %>
-            <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-            <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <% end %>
+              <% if tweet.user_id == current_user.id %>
+              <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+              <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              </tr>
+              <% end %>
             <% end %>
             <%end%>
-
-          </tr>
         </tbody>
 
       </table>

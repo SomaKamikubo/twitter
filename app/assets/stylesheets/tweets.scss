@@ -5,50 +5,52 @@
 
 // タブ作成
 .area {
-    width: 800px;
-    margin: auto;
-    flex-wrap: wrap;
-    display: flex;
-    text-align: center;
-  }
-   
-  .tab_class {
-    width: 50%;
-    height: 50px;
-    line-height: 50px;
-    font-size: 15px;
-    text-align: center;
-    display: block;
-    float: left;
-    order: -1;
-    transition: all .2s;
-    font-size: x-large;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
-   
-  input[name="tab_name"] {
-    display: none;
-  }
-   
-  input:checked + .tab_class {
-    background-color: lightpink;
-    color:white;
-  }
-   
-  .content_class {
-    display: none;
-    width: 100%;
-    background-color: lightgoldenrodyellow;
-  }
-   
-  input:checked + .tab_class + .content_class {
-    display: block;
-  }
-  .a {
-    border-style: solid;
-    border-color: lightslategray;
-  }
+  width: 800px;
+  margin: auto;
+  flex-wrap: wrap;
+  display: flex;
+  text-align: center;
+}
+  
+.tab_class {
+  width: 50%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 15px;
+  text-align: center;
+  display: block;
+  float: left;
+  order: -1;
+  transition: all .2s;
+  font-size: x-large;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+  
+input[name="tab_name"] {
+  display: none;
+}
+  
+input:checked + .tab_class {
+  background-color: lightpink;
+  color:white;
+}
+  
+.content_class {
+  display: none;
+  width: 100%;
+  background-color: lightgoldenrodyellow;
+}
+  
+input:checked + .tab_class + .content_class {
+  display: block;
+}
+
+.area td {
+  border-style: solid;
+  border-color: lightslategray;
+}
+
 
 
 // ここまでタブ
