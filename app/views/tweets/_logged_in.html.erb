@@ -3,19 +3,6 @@
 
 
 <body>
-  <div class="flex">
-    <div class="sidebar" id="center">
-      <h2>マイアカウント</h2>
-      <%= link_to 'アカウントの情報', current_user%>
-      <%= link_to 'New Tweet', new_tweet_path%>
-      <br>
-      <%= link_to "ログアウト", logout_path, method: :delete %>
-      <% @users.each do |user|%>
-      <%= link_to user.name, user%>
-      <%end%>
-    </div>
-
-
     <script>
       function func1(id) {
         const elements = document.getElementsByName(id);
@@ -30,7 +17,6 @@
       }
     </script>
 
-    <div class="timeline">
       <h2 id="center">タイムライン</h2>
       <table>
         <thead>
@@ -71,5 +57,4 @@
 
 
     <br>
-  </div>
 </body>

@@ -3,7 +3,7 @@
 5.times do |no|
 
         User.create(:name => "user#{no+1}",:email => "#{no+1}@com", 
-            :password =>"hogehoge", :password_confirmation =>"hogehoge" :comment => "プロフィール情報")
+            :password =>"hogehoge", :password_confirmation =>"hogehoge", :comment => "プロフィール情報")
 end
 
 100.times do |no|
