@@ -15,6 +15,7 @@ class TweetsController < ApplicationController
       follow.push(current_user.id)
       @tweets = Tweet.where(user_id: follow)
     end
+    # @tweets.order(:created_at :desc)
     @users = User.all
   end
 

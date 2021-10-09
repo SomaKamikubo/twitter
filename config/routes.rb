@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
-  resources :users ,only: [:new, :show, :create]
+  resources :users ,only: [:new, :show, :create, :update, :edit]
   root :to => 'tweets#index'
   # post 'tweets/:id', to:'likes#create'
   # resources :likes ,only: [:destroy] 
@@ -23,5 +23,7 @@ Rails.application.routes.draw do
     get :followers, on: :member
   end 
   delete 'users/:user_id/relationships', to: 'relationships#destroy' 
+
+
 
 end

@@ -1,4 +1,4 @@
-<%= link_to 'Back', tweets_path %>
+
 <h2><span id="textbig"><%= @user.name%></span>
   <font color="gray"> ID:<%=@user.id%></font>
   </p>
@@ -8,11 +8,22 @@
 <form name="form1" id="id_form1" action="">
     <div id="output"></div>
     <p id="first_text"><%= @user.comment %></p>
-    <div id="id_textBox1" style="display:none" value="<%= @user.comment %>"><%= render 'form', user: @user %></div>
-    <input type="button" id="profile" value="変更" onclick="onButtonClick();" />
+    <div id="id_textBox1" style="display:none"></div>
+    
+
+
+    <%# <input type="button" id="profile" value="変更" onclick="onButtonClick();" /> %>
+    
+    <%= link_to 'Edit', edit_user_path(@user) %> 
+
+  
+    
+    
+
+
 </form>
 
-<p></p>
+
 
 
 <% else%>
@@ -26,17 +37,19 @@
 function onButtonClick() {
 	if(document.getElementById("id_textBox1").style.display=="block"){
 		document.getElementById("id_textBox1").style="display:none";
-    target = document.getElementById("output");
-    target.innerText = document.forms.id_form1.id_textBox1.value;
+    // target = document.getElementById("output");
+    // target.innerText = document.forms.id_form1.id_textBox1.value;
+    // console.log(document.forms.id_form1.id_textBox1.value)
     document.getElementById("profile").value ="変更";
     document.getElementById("output").style="display:block";
 	}else{
 		document.getElementById("id_textBox1").style ="display:block";
-    document.getElementById("profile").value ="確定";
+    document.getElementById("profile").style ="display:none";
     document.getElementById("first_text").style="display:none";
     document.getElementById("output").style="display:none";
 	}
 }
+
 </script>
 
 
