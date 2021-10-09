@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+<% if @tweet.origintweet != nil%>
+<%= @tweet.origintweet.letter%>
+<%end%>
+
+
 <p>
   <strong>User:</strong>
   <%= @tweet.user_id %>
@@ -10,5 +15,9 @@
   <%= @tweet.letter %>
 </p>
 
-<%= link_to 'Edit', edit_tweet_path(@tweet) %> |
-<%= link_to 'Back', tweets_path %>
+
+  <%= @tweet.replys.count%>
+
+  <%= render 'replyfrom', {tweet: Tweet.new , origin: @tweet}%>
+  <%= link_to 'Edit', edit_tweet_path(@tweet) %> |
+  <%= link_to 'Back', tweets_path %>

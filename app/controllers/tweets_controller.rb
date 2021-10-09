@@ -15,7 +15,7 @@ class TweetsController < ApplicationController
       follow.push(current_user.id)
       @tweets = Tweet.where(user_id: follow)
     end
-    # @tweets.order(:created_at :desc)
+    @tweets = @tweets.order(created_at: :desc)
     @users = User.all
   end
 
@@ -26,7 +26,7 @@ class TweetsController < ApplicationController
   # GET /tweets/new
   def new
     @tweet = Tweet.new(user_id: current_user.id)
-    @user = current_user.id
+    @user = current_user
   end
 
   # GET /tweets/1/edit
@@ -37,14 +37,26 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
+    @Stweet = Tweet.new
+
+    if(params[:id] != nil)
+      @Ptweet = Tweet.find(params[:id])
+      @Ptweet.replys = [@tweet]
+      @Stweet = @Ptweet
+    else
+      @Stweet = @tweet
+    end
+    
+
+   
 
     respond_to do |format|
-      if @tweet.save
-        format.html { redirect_to @tweet, notice: "Tweet was successfully created." }
-        format.json { render :show, status: :created, location: @tweet }
+      if @Stweet.save
+        format.html { redirect_to root_url, notice: "Tweet was successfully created." }
+        format.json { render :show, status: :created, location: @Stweet }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @tweet.errors, status: :unprocessable_entity }
+        format.json { render json: @Stweet.errors, status: :unprocessable_entity }
       end
     end
   end

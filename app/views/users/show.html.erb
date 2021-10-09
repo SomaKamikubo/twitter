@@ -58,16 +58,21 @@ function onButtonClick() {
     <input id="tab1" type="radio" name="tab_name" checked>
     <label class="tab_class" for="tab1">ツイート</label>
     <div class="content_class">
-      <table >
+      <table>
         <tbody>
           <% @tweets.each do |tweet| %>
-          <tr >
-            <td ><%= link_to tweet.letter, tweet %></td>
+          <tr>
+            <td><%= link_to tweet.letter, tweet %></td>
             <% if tweet.user_id == @user.id %>
             <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
             <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
           </tr>
+          <td>
+            <div id="likes_buttons_<%= tweet.id %>">
+              <%= render partial: 'likes/like', locals: { tweet: tweet} %>
+            </div>
+          </td>
           <% end %>
         </tbody>
       </table>
@@ -77,21 +82,26 @@ function onButtonClick() {
     <div class="content_class">
       <table>
         <tbody>
-            <% if @like_tweets == []%>
-            <tr>
+          <% if @like_tweets == []%>
+          <tr>
             <td>ここにいいねした一覧が表示されます</td>
-            </tr>
-            <%else%>
-            <% @like_tweets.each do |tweet| %>
-            <tr>
+          </tr>
+          <%else%>
+          <% @like_tweets.each do |tweet| %>
+          <tr>
             <td><%= link_to tweet.letter, tweet %></td>
-              <% if tweet.user_id == current_user.id %>
-              <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
-              <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-              </tr>
-              <% end %>
+            <% if tweet.user_id == current_user.id %>
+            <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
+            <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
-            <%end%>
+            <td>
+              <div id="likes_buttons_<%= tweet.id %>">
+                <%= render partial: 'likes/like', locals: { tweet: tweet} %>
+              </div>
+            </td>
+          </tr>
+          <% end %>
+          <%end%>
         </tbody>
 
       </table>
