@@ -5,18 +5,26 @@
 <%end%>
 
 
-<p>
-  <strong>User:</strong>
+<p id=textLittleBig>
+  <strong>UserID:</strong>
   <%= @tweet.user_id %>
 </p>
 
-<p>
-  <strong>Tweet:</strong>
+<p id=textbig>
   <%= @tweet.letter %>
 </p>
 
+  <!--<%= @tweet.replys.count%>-->
+  <% @tweet.replys.each do |reply| %>
+  <table>
+  <tr>
+    <% user_link = '/users/' + reply.user_id.to_s%>
+  <td><%= link_to reply.user_id,  user_link %></td>
+  <td><%= link_to reply.letter, reply %></td>
+  </tr>
+</table>
+  <%end%>
 
-  <%= @tweet.replys.count%>
 
   <%= render 'replyfrom', {tweet: Tweet.new , origin: @tweet}%>
   <%= link_to 'Edit', edit_tweet_path(@tweet) %> |

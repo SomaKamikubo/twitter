@@ -67,12 +67,13 @@ function onButtonClick() {
             <td><%= link_to 'Edit', edit_tweet_path(tweet) %></td>
             <td><%= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' } %></td>
             <% end %>
-          </tr>
-          <td>
+            <td>
             <div id="likes_buttons_<%= tweet.id %>">
               <%= render partial: 'likes/like', locals: { tweet: tweet} %>
             </div>
-          </td>
+            </td>
+          </tr>
+          
           <% end %>
         </tbody>
       </table>
