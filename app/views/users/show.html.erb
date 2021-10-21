@@ -1,25 +1,21 @@
 
 <h2><span id="textbig"><%= @user.name%></span>
   <font color="gray"> ID:<%=@user.id%></font>
-  </p>
 </h2>
+<h3>
+フォロー<%= @user.followings.count %>,
+フォロワー<%= @user.followers.count %>
+</h3>
+
 
 <% if current_user == @user %>
 <form name="form1" id="id_form1" action="">
     <div id="output"></div>
     <p id="first_text"><%= @user.comment %></p>
     <div id="id_textBox1" style="display:none"></div>
-    
-
-
     <%# <input type="button" id="profile" value="変更" onclick="onButtonClick();" /> %>
     
     <%= link_to 'Edit', edit_user_path(@user) %> 
-
-  
-    
-    
-
 
 </form>
 

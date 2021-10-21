@@ -37,26 +37,21 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id
-    @Stweet = Tweet.new
 
     if(params[:id] != nil)
-      @Ptweet = Tweet.find(params[:id])
-      @Ptweet.replys = [@tweet]
-      @Stweet = @Ptweet
-    else
-      @Stweet = @tweet
+      @tweet.origintweet_id = params[:id]
     end
     
 
    
 
     respond_to do |format|
-      if @Stweet.save
+      if @tweet.save
         format.html { redirect_to root_url, notice: "Tweet was successfully created." }
-        format.json { render :show, status: :created, location: @Stweet }
+        format.json { render :show, status: :created, location: @tweet }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @Stweet.errors, status: :unprocessable_entity }
+        format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
     end
   end

@@ -1,28 +1,27 @@
 <p id="notice"><%= notice %></p>
 
 <% if @tweet.origintweet != nil%>
-<%= @tweet.origintweet.letter%>
+<%= link_to @tweet.origintweet.letter , @tweet.origintweet%>
+
 <%end%>
 
 
 <p id=textLittleBig>
-  <strong>UserID:</strong>
-  <%= @tweet.user_id %>
+  <%= link_to @tweet.user.name , @tweet.user%>
 </p>
 
 <p id=textbig>
   <%= @tweet.letter %>
 </p>
+ <div id="likes_buttons_<%= @tweet.id %>">
+    <%= render partial: 'likes/like', locals: { tweet: @tweet} %>
+</div>
 
   <!--<%= @tweet.replys.count%>-->
   <% @tweet.replys.each do |reply| %>
   <table>
-  <tr>
-    <% user_link = '/users/' + reply.user_id.to_s%>
-  <td><%= link_to reply.user_id,  user_link %></td>
-  <td><%= link_to reply.letter, reply %></td>
-  </tr>
-</table>
+    <%= render 'letter', tweet: reply %>
+  </table>
   <%end%>
 
 

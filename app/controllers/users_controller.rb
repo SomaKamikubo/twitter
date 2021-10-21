@@ -5,8 +5,8 @@ class UsersController < ApplicationController
 
   def show
     set_user
-    @tweets = @user.tweets
-    @like_tweets = @user.like_tweets
+    @tweets = @user.tweets.order(created_at: :desc)
+    @like_tweets = @user.like_tweets.order(created_at: :desc)
     # @likes = Like.where(user_id: @user.id)
     # @liketweetid = @likes.pluck(:tweet_id)
     # @like_tweets = Tweet.where(id: @liketweetid)
