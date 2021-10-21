@@ -3,8 +3,13 @@
   <font color="gray"> ID:<%=@user.id%></font>
 </h2>
 <h3>
-フォロー<%= @user.followings.count %>,
-フォロワー<%= @user.followers.count %>
+<%= link_to "フォロー" + @user.followings.count.to_s, '/users/' + @user.id.to_s + '/followings'%> :
+
+<%= link_to "フォロワー" + @user.followers.count.to_s, '/users/' + @user.id.to_s + '/followers'%>
+
+
+
+
 </h3>
 
 

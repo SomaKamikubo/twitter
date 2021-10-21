@@ -1,0 +1,15 @@
+<div>
+<%= link_to "back", @user %>
+<br>
+<%= link_to_unless_current 'フォロー', '/users/' + @user.id.to_s + '/followings' %> | 
+<%= link_to_unless_current 'フォロワー', '/users/' + @user.id.to_s + '/followers' %>
+</div>
+<table>
+<tr>
+<% followList.each do |f| %>
+<td><%= link_to f.name,  f %></td>
+<% end %>
+</tr>
+
+</table>
+

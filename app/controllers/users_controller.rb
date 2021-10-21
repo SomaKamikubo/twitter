@@ -44,6 +44,14 @@ class UsersController < ApplicationController
     set_user
   end
 
+  def followings
+    set_user
+  end
+
+  def followers
+    set_user
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.

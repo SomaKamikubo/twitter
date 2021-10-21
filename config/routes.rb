@@ -24,6 +24,9 @@ Rails.application.routes.draw do
   end 
   delete 'users/:user_id/relationships', to: 'relationships#destroy' 
 
+  get 'users/:id/followings' => 'users#followings'
+  get 'users/:id/followers' => 'users#followers'
+
 
 
 end
