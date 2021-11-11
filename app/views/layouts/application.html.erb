@@ -20,11 +20,7 @@
       <%= link_to 'New Tweet', new_tweet_path%>
       <br>
       <%= link_to "ログアウト", logout_path, method: :delete %>
-      <%users = User.all%>
-      <% users.each do |user|%>
-      <%= link_to user.name, user %>
-      <%end%>
-      <%= link_to "検索", search_user_path %>
+      <%= link_to "検索", search_users_path %>
     </div>
     <div class="timeline">
       <%= yield %>

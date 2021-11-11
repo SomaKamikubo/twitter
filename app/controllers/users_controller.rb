@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   end
 
   def search
-    @users = User.search(params[:search])
+    @users = User.search(params[:user])
   end
 
   private
