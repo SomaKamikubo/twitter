@@ -21,12 +21,15 @@ Rails.application.routes.draw do
     resources :relationships, only: [:create, :destroy]
     get :follows, on: :member
     get :followers, on: :member
+    get :search, on: :member
   end 
   delete 'users/:user_id/relationships', to: 'relationships#destroy' 
 
   get 'users/:id/followings' => 'users#followings'
   get 'users/:id/followers' => 'users#followers'
 
+  resources :searchs, only: [:index]
+ # get
 
 
 end
