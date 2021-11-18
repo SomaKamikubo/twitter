@@ -1,7 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <% if @tweet.origintweet != nil%>
+<%= link_to @tweet.origintweet.user.name , @tweet.origintweet.user%>
 <%= link_to @tweet.origintweet.letter , @tweet.origintweet%>
+
 
 <%end%>
 

@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   def new
+    render :layout => "not_logged.html.erb"
   end
 
   def create

@@ -5,6 +5,10 @@ class TweetsController < ApplicationController
 
   # GET /tweets or /tweets.json
   def index
+    unless logged_in?
+      redirect_to "/tweets/not_logged_in"
+    end
+
     if current_user == nil
       @tweets = Tweet.all
     else
@@ -76,6 +80,10 @@ class TweetsController < ApplicationController
       format.html { redirect_to tweets_url, notice: "Tweet was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def not_logged_in
+    render :layout => "not_logged.html.erb"
   end
 
   private

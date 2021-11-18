@@ -9,19 +9,12 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
-<%= link_to image_tag("logo.png"), root_url%>
+
 
 
 <body>
   <div class="flex">
-    <div class="sidebar" id="center">
-      <h2>マイアカウント</h2>
-      <%= link_to 'アカウントの情報', current_user%>
-      <%= link_to 'New Tweet', new_tweet_path%>
-      <br>
-      <%= link_to "ログアウト", logout_path, method: :delete %>
-      <%= link_to "ユーザー検索", search_users_path %>
-    </div>
+
     <div class="timeline">
       <%= yield %>
     </div>

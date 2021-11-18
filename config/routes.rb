@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'tweets/not_logged_in', to: 'tweets#not_logged_in'
   get 'relationships/create'
   get 'relationships/destroy'
   resources :tweets
@@ -34,5 +35,5 @@ Rails.application.routes.draw do
   get 'searchs/user', to:'searchs#user'
  # get
 
-
+  
 end

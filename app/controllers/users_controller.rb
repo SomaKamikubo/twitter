@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def new
     @user = User.new()
+    render :layout => "not_logged.html.erb"
   end
 
   def show

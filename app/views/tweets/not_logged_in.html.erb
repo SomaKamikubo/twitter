@@ -1,15 +1,14 @@
-<p id="textbig">タスクの管理ができるアプリです。利用するにはログインしてください。</p>
+<p id="textbig">nokotta-です。利用するにはログインしてください。</p>
 <div class="midle" id="center">
 
-<p id="textbig" id="center">ログイン</p>
-<%= link_to "ログイン", login_path%>
+
 <br>
+<div id="mannaka">
 <%= link_to login_path do image_tag('login.png',:size => '240x60' , onmouseover: "this.src='#{asset_path('login2.png')}'" ,onmouseout: "this.src='#{asset_path('login.png')}'") end %>
 <br>
 <br>
 <%= link_to new_user_path do image_tag('first.png',:size => '240x60' , onmouseover: "this.src='#{asset_path('first2.png')}'" ,onmouseout: "this.src='#{asset_path('first.png')}'") end %>
 <br>
+</div>
 
 </div>
-<p id="center">メールアドレスパスワードをお忘れ方</p>
-<p id="center">パスワード変更</p>
